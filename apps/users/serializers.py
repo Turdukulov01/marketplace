@@ -7,7 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = CustomUser  # Указываем, что сериализатор работает с моделью CustomUser
-        fields = ('id', 'username', 'email', 'phone', 'avatar')  # Поля, которые будут доступны через API
+        fields = ('id', 'username', 'email', 'phone', 'avatar', 'role')  # Поля, которые будут доступны через API
         
         
 class UserCreateSerializer(UserCreateSerializer):

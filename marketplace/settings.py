@@ -41,13 +41,16 @@ INSTALLED_APPS = [
     #apps
     'apps.users',
     'rest_framework',
+    'apps.product',
     
 ]
 
 INSTALLED_APPS += [
     'djoser',
     'rest_framework_simplejwt',
+    'django_filters',
 ]
+
 
 
 MIDDLEWARE = [
@@ -140,6 +143,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',  # Используем JWT для аутентификации
         'rest_framework.authentication.SessionAuthentication',
     ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 
 DJOSER = {
@@ -153,3 +157,9 @@ DJOSER = {
     'TOKEN_MODEL': None,  # Отключаем стандартные токены Django
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Для тестов (выводит email в консоль)
+DEFAULT_FROM_EMAIL = 'admin@example.com'
+
+
+MEDIA_URL = '/media/'  # URL-адрес для доступа к файлам
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Директория хранения файлов
